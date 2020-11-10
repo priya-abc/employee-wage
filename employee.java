@@ -28,3 +28,8 @@ public class employee {
 		default:
 			System.out.println("Invalid Entry");
 		}
+              totalwage=totalwage+wage;
+		}
+		System.out.println("Wage=" +totalwage);		
+	}
+}
