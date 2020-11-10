@@ -35,7 +35,11 @@ public class employee {
 				hours=8;
 			}
 			break;
+<<<<<<< HEAD
                  case 0:
+=======
+                   case 0:
+>>>>>>> main
 			System.out.println("Absent");
 			wage=0;
 			hours=0;
@@ -43,3 +47,8 @@ public class employee {
 		default:
 			System.out.println("Invalid Entry");
 		}
+              totalwage=totalwage+wage;
+		}
+		System.out.println("Wage=" +totalwage);		
+	}
+}
