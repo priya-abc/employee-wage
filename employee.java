@@ -1,54 +1,47 @@
-package emp;
+package t;
 import java.util.*;
-public class employee {
-
-        public static void main(String [] args) {
+public class a {
+	public static void main(String [] args) {
+		String name;
 		int WagePerHour=20;
 		int FullDayHour=8;
 		int HalfDayHour=4;
-		int wage=0;
-		int hours=0;
 		int days=0;
 		int totalhours=0;
+		int hours=0;
+		int wage=0;
 		int totalwage=0;
+		double salary,priceoftime,total;
+		int timeover;
 		System.out.println("Welcome to Employee Wage Computation Program");
+		Scanner sc=new Scanner(System.in);
 		Random rnum = new Random();
-		while( days!=20 && totalhours!=100)
+		for(int i=0;i<90;i++)
 		{
-		int random = rnum.nextInt(2);
-		int halfday= rnum.nextInt(2);
-		days++;
-		totalhours=totalhours+hours;
-		switch (random)
-		{case 1:
-			System.out.println("Present");
-			if ( halfday == 0)
+			int random = rnum.nextInt(2);
+			int halfday= rnum.nextInt(2);
+			if (random == 0)
 			{
-				System.out.println("Employee present for half day only");
-				wage=WagePerHour*HalfDayHour;
-				hours=4;
-			}
+				System.out.print("Employee absent");
+		}
 			else
 			{
-				System.out.println("Employee present for full day");
-				wage=WagePerHour*FullDayHour;
-				hours=8;
+				System.out.print("Employee Present");
 			}
-			break;
-<<<<<<< HEAD
-                 case 0:
-=======
-                   case 0:
->>>>>>> main
-			System.out.println("Absent");
-			wage=0;
-			hours=0;
-			break;
-		default:
-			System.out.println("Invalid Entry");
+		System.out.print("Enter name: ");
+		name=sc.nextLine();
+		System.out.print("Enter Salary: ");
+		salary=sc.nextDouble();
+		System.out.print("Enter OverTime: ");
+		timeover=sc.nextInt();
+		System.out.print("Enter Price of Time: ");
+		priceoftime=sc.nextDouble();
+		double pricetime=timeover*priceoftime;
+		total=pricetime+salary;
+		
+		System.out.println("Total Salary of Monthly: "+total);
+		
 		}
-              totalwage=totalwage+wage;
-		}
-		System.out.println("Wage=" +totalwage);		
-	}
 }
+}
+	
