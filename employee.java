@@ -1,47 +1,75 @@
 package t;
 import java.util.*;
-public class a {
+public class EmployeeDetail {
 	public static void main(String [] args) {
 		String name;
-		int WagePerHour=20;
-		int FullDayHour=8;
-		int HalfDayHour=4;
-		int days=0;
-		int totalhours=0;
-		int hours=0;
-		int wage=0;
-		int totalwage=0;
-		double salary,priceoftime,total;
-		int timeover;
 		System.out.println("Welcome to Employee Wage Computation Program");
-		Scanner sc=new Scanner(System.in);
-		Random rnum = new Random();
-		for(int i=0;i<90;i++)
-		{
-			int random = rnum.nextInt(2);
-			int halfday= rnum.nextInt(2);
-			if (random == 0)
-			{
-				System.out.print("Employee absent");
-		}
-			else
-			{
-				System.out.print("Employee Present");
-			}
-		System.out.print("Enter name: ");
-		name=sc.nextLine();
-		System.out.print("Enter Salary: ");
-		salary=sc.nextDouble();
-		System.out.print("Enter OverTime: ");
-		timeover=sc.nextInt();
-		System.out.print("Enter Price of Time: ");
-		priceoftime=sc.nextDouble();
-		double pricetime=timeover*priceoftime;
-		total=pricetime+salary;
-		
-		System.out.println("Total Salary of Monthly: "+total);
-		
-		}
-}
-}
+		import java.util.*;
+
+class EmployeeDetail {
+	private String name;
+	private float salary, hours;
 	
+	public EmployeeDetail() {
+		name = " ";
+		salary = 0;
+		hours = 0;
+	}
+	
+	public void getInfo(String n, float sal, float hr) {
+		name = n;
+		salary = sal;
+		hours = hr;
+	}
+	
+	public float AddSal() {
+		if(salary<500) {
+			salary = salary + 10;
+		}
+		return salary;
+	}
+	
+	public float AddWork() {
+		if(hours > 6) {
+			salary = salary + 5;
+		}
+		return salary;
+	}
+}
+
+class TestEmployee {
+	float salary;
+	
+	public TestEmployee(float sal) {
+		salary = sal;
+	}
+	
+	public void printSal() {
+		System.out.println("Salary : " + salary);
+	}
+}
+
+class Employee
+{
+	public static void main (String[] args)
+	{
+		EmployeeDetail emp = new EmployeeDetail();
+		
+		/* taking input of employee details */
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter name");
+		String name = sc.nextLine();
+		System.out.println("Enter salary");
+		float salary = sc.nextFloat();
+		System.out.println("Enter no. of hours of work");
+		float hours = sc.nextFloat();
+		
+		/* calling methods of EmployeeDetail class */
+		emp.getInfo(name, salary, hours);
+		salary = emp.AddSal();
+		salary = emp.AddWork();
+		
+		TestEmployee test = new TestEmployee(salary);  /* pass salary obtained from the methods of the EmployeeDetail class as parameter */
+		test.printSal();  /* calling method of TestEmployee class to print final salary */
+	}
+}
