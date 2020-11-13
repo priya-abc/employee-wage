@@ -3,6 +3,13 @@ import java.util.*;
 public class a {
 	public static void main(String [] args) {
 		String name;
+		int WagePerHour=20;
+		int FullDayHour=8;
+		int HalfDayHour=4;
+		int days=0;
+		int totalhours=0;
+		int hours=0;
+		int wage=0;
 		int totalwage=0;
 		double salary,priceoftime,total;
 		int timeover;
