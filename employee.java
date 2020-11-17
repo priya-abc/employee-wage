@@ -2,11 +2,15 @@ package t;
 import java.util.*;
 public class EmployeeDetail {
 	public static void main(String [] args) {
+<<<<<<< HEAD
 		String name;
 		System.out.println("Welcome to Employee Wage Computation Program");
 		import java.util.*;
 
 class EmployeeDetail {
+=======
+		System.out.println("Welcome to Employee Wage Computation Program");
+>>>>>>> UC8-modifying
 	private String name;
 	private float salary, hours;
 	
