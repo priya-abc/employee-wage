@@ -41,39 +41,59 @@ class EmployeeDetail {
 	}
 }
 
-class TestEmployee {
-	float salary;
-	
-	public TestEmployee(float sal) {
-		salary = sal;
-	}
-	
-	public void printSal() {
-		System.out.println("Salary : " + salary);
-	}
-}
+public class Employee{
 
-class Employee
-{
-	public static void main (String[] args)
-	{
-		EmployeeDetail emp = new EmployeeDetail();
-		
-		/* taking input of employee details */
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter name");
-		String name = sc.nextLine();
-		System.out.println("Enter salary");
-		float salary = sc.nextFloat();
-		System.out.println("Enter no. of hours of work");
-		float hours = sc.nextFloat();
-		
-		/* calling methods of EmployeeDetail class */
-		emp.getInfo(name, salary, hours);
-		salary = emp.AddSal();
-		salary = emp.AddWork();
-		
-		TestEmployee test = new TestEmployee(salary);  /* pass salary obtained from the methods of the EmployeeDetail class as parameter */
-		test.printSal();  /* calling method of TestEmployee class to print final salary */
-	}
+  private int employeeId;
+  private String employeeName;
+  private double salary;
+  private double netSalary;
+
+//setters
+  public void setEmployeeId(int employeeId){
+      this.employeeId=employeeId;
+  }
+
+  public void setEmployeeName(String employeeName){
+      this.employeeName=employeeName;
+  }
+
+  public void setSalary(double salary){
+      this.salary=salary;
+  }
+
+  public void setNetSalary(double netSalary){
+      this.netSalary=netSalary;
+  }
+
+  //getters
+  public int getEmployeeId(){
+      return employeeId;
+  }
+
+  public String getEmployeeName(){
+      return employeeName;
+  }
+
+  public double getSalary(){
+      return salary;
+  }
+
+  public double getNetSalary(){
+      return netSalary;
+  }
+
+  public void calculateNetSalary(double pfpercentage) {
+      double pfamount = salary * (pfpercentage / 100);
+      netSalary = salary - pfamount;
+  }
+
+  @Override
+  public String toString() {
+      String output = new StringBuffer()
+              .append("Id: ").append(employeeId)
+              .append(System.lineSeparator()).append("Name: ").append(employeeName)
+              .append(System.lineSeparator()).append("Salary: ").append(salary)
+              .append(System.lineSeparator()).append("Net Salary: ").append(netSalary).toString();
+      return output;
+  }
 }
