@@ -41,59 +41,59 @@ class EmployeeDetail {
 	}
 }
 
-public class Employee{
+class EmployeeTester
+{
+	public static void main(String [] args)
+	{
+		// Ask user for number of employees; create array of appropriate size
+		
+		int numberOfEmployees = Integer.parseInt(
+		Employee [] employees = new Employee [numberOfEmployees];
+		
+		// Read information on individual employees.  In each case, first ask
+		// user what kind of employee, then pop up dialog to read relevant
+		// information
+		
+		String [] employeeKinds = { "Hourly", "Salaried" };
+		String [] hourlyLabels = { "Name", "SSN", "Hourly Rate" };
+		String [] salariedLabels = { "Name", "SSN", "Annual Salary" };
 
-  private int employeeId;
-  private String employeeName;
-  private double salary;
-  private double netSalary;
-
-//setters
-  public void setEmployeeId(int employeeId){
-      this.employeeId=employeeId;
-  }
-
-  public void setEmployeeName(String employeeName){
-      this.employeeName=employeeName;
-  }
-
-  public void setSalary(double salary){
-      this.salary=salary;
-  }
-
-  public void setNetSalary(double netSalary){
-      this.netSalary=netSalary;
-  }
-
-  //getters
-  public int getEmployeeId(){
-      return employeeId;
-  }
-
-  public String getEmployeeName(){
-      return employeeName;
-  }
-
-  public double getSalary(){
-      return salary;
-  }
-
-  public double getNetSalary(){
-      return netSalary;
-  }
-
-  public void calculateNetSalary(double pfpercentage) {
-      double pfamount = salary * (pfpercentage / 100);
-      netSalary = salary - pfamount;
-  }
-
-  @Override
-  public String toString() {
-      String output = new StringBuffer()
-              .append("Id: ").append(employeeId)
-              .append(System.lineSeparator()).append("Name: ").append(employeeName)
-              .append(System.lineSeparator()).append("Salary: ").append(salary)
-              .append(System.lineSeparator()).append("Net Salary: ").append(netSalary).toString();
-      return output;
-  }
+		for (int i = 0; i < numberOfEmployees; i ++)
+		{
+			String kind = (String) JOptionPane.showInputDialog(null,
+				"What kind of employee is employee " + (i+1) + "? ",
+				"", JOptionPane.QUESTION_MESSAGE, null, employeeKinds, "Hourly");
+			if (kind.equals("Hourly"))
+			{
+				String [] employeeInfo = MultiInputPane.showMultiInputDialog(
+					null, hourlyLabels, "Employee Information");
+				employees[i] = new HourlyEmployee(employeeInfo[0], 
+					employeeInfo[1], Double.parseDouble(employeeInfo[2]));
+			}
+			else				
+			{
+				String [] employeeInfo = MultiInputPane.showMultiInputDialog(
+					null, salariedLabels, "Employee Information");
+				employees[i] = new SalariedEmployee(employeeInfo[0], 
+					employeeInfo[1], Double.parseDouble(employeeInfo[2]));
+			}
+		}
+				
+		// Print out information on all the employees
+		
+		System.out.println("Information on employees:"); System.out.println();
+		for (int i = 0; i < employees.length; i ++)
+			System.out.println(employees[i].toString());
+	  
+		// Pay them.  Note that, for each hourly employee, the user will be
+		// asked to input the hours worked
+		
+		System.out.println();
+		System.out.println("Weekly payroll:"); System.out.println();
+		for (int i = 0; i < employees.length; i ++)
+			System.out.println(employees[i].getName() + " $" + 
+				(new DecimalFormat("0.00")).format(employees[i].weeklyPay()));
+				
+		System.exit(0);
+	}
 }
