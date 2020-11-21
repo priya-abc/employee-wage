@@ -5,48 +5,73 @@ public class EmployeeDetail {
 <<<<<<< HEAD
 		String name;
 		System.out.println("Welcome to Employee Wage Computation Program");
-		import java.util.*;
-public class paycheck {
 
-    public static void main(String[] args) {
-        // TODO Auto-generated method stub
+import java.util.*;
 
-        Scanner input = new Scanner (System.in);
+class EmployeeDetail {
+	private String name;
+	private float salary, hours;
+	
+	public EmployeeDetail() {
+		name = " ";
+		salary = 0;
+		hours = 0;
+	}
+	
+	public void getInfo(String n, float sal, float hr) {
+		name = n;
+		salary = sal;
+		hours = hr;
+	}
+	
+	public float AddSal() {
+		if(salary<500) {
+			salary = salary + 10;
+		}
+		return salary;
+	}
+	
+	public float AddWork() {
+		if(hours > 6) {
+			salary = salary + 5;
+		}
+		return salary;
+	}
+}
 
-        NumberFormat nf = NumberFormat.getCurrencyInstance();
+class TestEmployee {
+	float salary;
+	
+	public TestEmployee(float sal) {
+		salary = sal;
+	}
+	
+	public void printSal() {
+		System.out.println("Salary : " + salary);
+	}
+}
 
-        System.out.println("Enter the employee name: ");
-        long empName = input.nextLong();
-
-        mediaArray[empName];
-
-        System.out.println("Enter your total sales for the year:  ");
-        double totalSales = input.nextDouble();
-
-        System.out.println("\r");
-
-        Calculations c = new Calculations (totalSales);
-
-        System.out.println("Your Total compensation with your annual sales is:  " + nf.format(c.getCommissionCalc()));
-
-        System.out.println("\r");
-
-        System.out.println("If you were to increase your sales you could earn even more money!");
-
-        System.out.println("\r");
-
-        double i = totalSales + 5000;
-        double finish = totalSales * 1.5;
-
-        while (i <= finish) {
-
-            c.totalSales = i;
-
-            System.out.println("If you were to increase your sales commission to " + nf.format(i) + " you could earn: " + nf.format(c.getCommissionCalc()));
-
-            i = i + 5000;
-        }
-
-    }
-
+class Employee
+{
+	public static void main (String[] args)
+	{
+		EmployeeDetail emp = new EmployeeDetail();
+		
+		/* taking input of employee details */
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter name");
+		String name = sc.nextLine();
+		System.out.println("Enter salary");
+		float salary = sc.nextFloat();
+		System.out.println("Enter no. of hours of work");
+		float hours = sc.nextFloat();
+		
+		/* calling methods of EmployeeDetail class */
+		emp.getInfo(name, salary, hours);
+		salary = emp.AddSal();
+		salary = emp.AddWork();
+		
+		TestEmployee test = new TestEmployee(salary);  /* pass salary obtained from the methods of the EmployeeDetail class as parameter */
+		test.printSal();  /* calling method of TestEmployee class to print final salary */
+	}
 }
